@@ -27,7 +27,7 @@ const HubDetailsPage: React.FC = () => {
 
     return (
         <>
-            <div className="flex-1  sm:ml-64 max-[492px]:p-0">
+            <div className="flex-1  min-[745px]:ml-64 max-[492px]:p-0">
                 <div className={`sticky top-0 bg-white z-10 ${isScrolled ? 'shadow-md' : ''}`}>
                     <div className="max-[492px]:pt-2 max-[492px]:pb-2 p-6 pt-6 pb-6 font-bold text-xl">
                         Hub Details

@@ -64,75 +64,77 @@ const SortMenu: React.FC<SortMenuProps> = memo(() => {
     };
 
     return (
-        <div className="relative inline-block text-left" ref={menuRef}>
-            <button
-                type="button"
-                className="ml-2 p-2 rounded-md bg-gray-200"
-                id="sort-menu"
-                onClick={toggleMenu}
-            >
-                <SortIcon />
-                {sortOrder && (
-                    <div className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></div>
-                )}
-            </button>
-            {isMenuOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                    <div
-                        className="py-1"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="sort-menu"
-                    >
-                        <SortMenuItem
-                            option="displayName"
-                            label="Hub Name"
-                            onChange={handleSortChange}
-                            currentOption={sortBy}
-                            sortOrder={sortOrder}
-                        />
+        <div className="flex items-center justify-center">
+            <div className="relative inline-block text-left" ref={menuRef}>
+                <button
+                    type="button"
+                    className="ml-2 p-2 rounded-md bg-gray-200"
+                    id="sort-menu"
+                    onClick={toggleMenu}
+                >
+                    <SortIcon />
+                    {sortOrder && (
+                        <div className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></div>
+                    )}
+                </button>
+                {isMenuOpen && (
+                    <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                        <div
+                            className="py-1"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="sort-menu"
+                        >
+                            <SortMenuItem
+                                option="displayName"
+                                label="Hub Name"
+                                onChange={handleSortChange}
+                                currentOption={sortBy}
+                                sortOrder={sortOrder}
+                            />
 
-                        <SortMenuItem
-                            option="totalRecoveredQuantity"
-                            label="Collected Status"
-                            onChange={handleSortChange}
-                            currentOption={sortBy}
-                            sortOrder={sortOrder}
+                            <SortMenuItem
+                                option="totalRecoveredQuantity"
+                                label="Collected Status"
+                                onChange={handleSortChange}
+                                currentOption={sortBy}
+                                sortOrder={sortOrder}
 
-                        />
-                        <SortMenuItem
-                            option="location"
-                            label="Location"
-                            onChange={handleSortChange}
-                            currentOption={sortBy}
-                            sortOrder={sortOrder}
+                            />
+                            <SortMenuItem
+                                option="location"
+                                label="Location"
+                                onChange={handleSortChange}
+                                currentOption={sortBy}
+                                sortOrder={sortOrder}
 
-                        />
+                            />
 
 
-                        <div className="flex justify-end px-4 py-2">
-                            <button
-                                className="text-black font-light px-2 py-1 "
-                                onClick={onClear}
-                            >
-                                Clear
-                            </button>
-                            <button
-                                className="mr-2 bg-gray-500 font-light text-white px-2 py-1 rounded"
-                                onClick={onApplyAsc}
-                            >
-                                ↑
-                            </button>
-                            <button
-                                className="mr-2 bg-gray-500 font-light text-white px-2 py-1 rounded"
-                                onClick={onApplyDesc}
-                            >
-                                ↓
-                            </button>
+                            <div className="flex justify-end px-4 py-2">
+                                <button
+                                    className="text-black font-light px-2 py-1 "
+                                    onClick={onClear}
+                                >
+                                    Clear
+                                </button>
+                                <button
+                                    className="mr-2 bg-gray-500 font-light text-white px-2 py-1 rounded"
+                                    onClick={onApplyAsc}
+                                >
+                                    ↑
+                                </button>
+                                <button
+                                    className="mr-2 bg-gray-500 font-light text-white px-2 py-1 rounded"
+                                    onClick={onApplyDesc}
+                                >
+                                    ↓
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 });

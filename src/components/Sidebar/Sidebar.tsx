@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
             </button>
 
             <aside
-                className={`fixed top-0 left-0 z-40 w-64 h-full transition-transform ${isOpen ? 'transform-none' : '-translate-x-full sm:translate-x-0'
+                className={`fixed top-0 left-0 z-40 w-64 h-full transition-transform ${isOpen ? 'transform-none' : '-translate-x-full min-[745px]:translate-x-0'
                     }`}
                 aria-label="Sidebar"
             >
