@@ -6,6 +6,10 @@ The Hub Collection Application is a comprehensive tool designed to manage and di
 ![image](https://github.com/LowBP/hub-collection-app/assets/33143395/66414958-5da7-42ce-b28e-ea4f9416e78c)
 
 
+https://github.com/LowBP/hub-collection-app/assets/33143395/70e5a146-8925-4027-aefc-2fba8d96bcaa
+
+
+
 ### Features
 
 - **Listing Hubs**: Displays a list of all hubs with detailed information.
