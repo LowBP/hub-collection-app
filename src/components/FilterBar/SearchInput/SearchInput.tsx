@@ -17,6 +17,7 @@ const SearchInput: React.FC = () => {
         }
 
         setSearchTerm(value);
+        setSearchName(value)
     };
 
     const handleSearch = () => {
@@ -26,13 +27,7 @@ const SearchInput: React.FC = () => {
     const handleClear = () => {
         setSearchTerm("");
         setSearchName("")
-
     };
-
-    const handleKeyDown = () => {
-        handleSearch();
-    };
-
 
     return (
         <div className="flex">
@@ -43,7 +38,6 @@ const SearchInput: React.FC = () => {
                     className="border p-2 rounded-l focus:outline-none w-full"
                     value={searchTerm}
                     onInput={onChangeInput}
-                    onKeyDown={handleKeyDown}
                 />
                 {searchTerm && (
                     <div
