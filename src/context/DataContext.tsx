@@ -12,7 +12,7 @@ interface DataContextType {
     setParentChildHubs: React.Dispatch<React.SetStateAction<ParentHub[]>>
     performActionsAfterParentHubToggle: () => void
     setAssignableState: React.Dispatch<React.SetStateAction<string>>
-    setHubState: React.Dispatch<React.SetStateAction<HUB_STATE>>
+    setHubState: React.Dispatch<React.SetStateAction<HUB_STATE | ''>>
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -42,7 +42,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [assignable, setAssignableState] = useState('');
 
     // hub state filter
-    const [hubState, setHubState] = useState<HUB_STATE>(HUB_STATE.ACTIVE);
+    const [hubState, setHubState] = useState<HUB_STATE | ''>('');
 
 
     useEffect(() => {
@@ -91,8 +91,13 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         // set sort key and sort order value
         setSortOrder(sortOrder);
         setSortKey(sortBy);
-        allMenuBarActions();
     }
+
+    useEffect(() => {
+        resetCollectionHubs();
+        allMenuBarActions();
+    }, [sortOrder])
+
 
     // parent hub toggle action
     const performActionsAfterParentHubToggle = () => {

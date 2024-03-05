@@ -23,7 +23,7 @@ const StateDropdown: React.FC = () => {
 
     const handleStateChange = (newState: Option) => {
         setSelectedState(newState);
-        setHubState(newState.value as HUB_STATE)
+        setHubState(newState.value as HUB_STATE | '')
     };
 
     return (
