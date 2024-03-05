@@ -1,12 +1,13 @@
 import React from 'react';
 import { useData } from '../../context/DataContext';
 import { CloseIcon, OngoingIcon, PlusIcon, TickIcon } from '../UI/Icons';
+import SkeletonLoader from '../UI/SkeletonLoader/SkeletonLoader';
 
 const HubSelectionPanel: React.FC = () => {
 
-    const { parentChildHubs, setParentChildHubs, performActionsAfterParentHubToggle } = useData();
+    const { parentChildHubs, setParentChildHubs, performActionsAfterParentHubToggle, isLoading } = useData();
 
-    if (!parentChildHubs.length)
+    if (!parentChildHubs.length && !isLoading)
         return null;
 
     const isAllHubSelected = !parentChildHubs.some(hub => hub.isSelected === false)
@@ -28,11 +29,13 @@ const HubSelectionPanel: React.FC = () => {
 
     return (
         <div className='bg-neutral-50 p-2 mb-2'>
+            {/* loading */}
+            {isLoading && <div className='flex'><SkeletonLoader className="max-[492px]:w-3 w-3 h-3 mb-5 px-2 py-1 mr-3 ml-2 mt-2" /> <SkeletonLoader className="max-[492px]:w-28 w-28 h-3 mb-5 mt-2" /> </div>}
 
-            <button className="mb-3 items-center bg-gray-50 text-light-black px-2 py-1 rounded transition-colors duration-300 hover:bg-gray-200 hover:text-black" onClick={selectAllParentHubs}>
+            {!isLoading && <button className="mb-3 items-center bg-gray-50 text-light-black px-2 py-1 rounded transition-colors duration-300 hover:bg-gray-200 hover:text-black" onClick={selectAllParentHubs}>
                 <input type="checkbox" name="select-all" id="" className='mr-2' checked={isAllHubSelected} />
                 {isAllHubSelected ? 'Unselect All Hubs' : 'Select All Hubs'}
-            </button>
+            </button>}
 
             <div className="flex flex-wrap gap-2 ml-4">
                 {parentChildHubs.map((parentChildHub, index) => (
@@ -51,6 +54,9 @@ const HubSelectionPanel: React.FC = () => {
                         </button>
                     </div>
                 ))}
+
+                {/* loading */}
+                {isLoading && <><SkeletonLoader className="max-[492px]:w-28 w-28 h-7" /> <SkeletonLoader className="max-[492px]:w-28 w-28 h-7" /></>}
             </div>
 
         </div>

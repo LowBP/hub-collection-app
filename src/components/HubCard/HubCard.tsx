@@ -1,34 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StateBadge from '../StateBadge/StateBadge';
 import { CompanyIcon, LocationIcon, OnboardIcon, OngoingIcon } from '../UI/Icons';
 import Tooltip from '../UI/Tooltip/Tooltip';
 import { HUB_STAGE, HUB_STATE, Hub } from '../../types/Hub';
+import SkeletonLoader from '../UI/SkeletonLoader/SkeletonLoader';
 
 interface HubCardProps {
     hub: Hub
 }
 
 const HubCard: React.FC<HubCardProps> = ({ hub }) => {
-    const DETAIL_LINK_URL = process.env.REACT_APP_TEST_APP_URL
+    const DETAIL_LINK_URL = process.env.REACT_APP_TEST_APP_URL;
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+    };
+
     return (
         <>
             <a href={`${DETAIL_LINK_URL}/${hub.slug}`} target='_blank' rel="noreferrer"
                 className={`flex items-center justify-center min-h-48 rounded smoothing-antialiased shadow-md hover:cursor-pointer transition-transform transform hover:shadow-lg flex-col ${hub.state === HUB_STATE.INACTIVE && 'opacity-80'}`}
             >
-                <div className="image-container border-gray-300" style={{ height: '200px' }}>
-                    <img className="rounded-t " src={hub.cardImage.directLink} alt="" />
-                    <div className='absolute top-28 right-2 text-xs text-white bg-blue-800 font-medium p-2 pl-5 pr-5'>
+                <div className="image-container border-gray-300 relative" style={{ height: '200px', minHeight: '200px' }}>
+                    {/* Placeholder background */}
+                    {!imageLoaded && (
+                        <div
+                            className="absolute inset-0 bg-gray-200 flex items-center justify-center"
+                            style={{ zIndex: 1 }}
+                        >
+                            <SkeletonLoader className="max-[492px]:w-40 w-40 h-6" />
+                        </div>
+                    )}
+                    <img
+                        loading="lazy"
+                        className="rounded-t"
+                        src={hub.cardImage.directLink}
+                        alt="bg-img"
+                        onLoad={handleImageLoad}
+                        style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.5s ease-in-out' }}
+                    />
+                    {imageLoaded && <div className='absolute top-28 right-2 text-xs text-white bg-blue-800 font-medium p-2 pl-5 pr-5'>
                         <div>
                             Collected STATUS
                         </div>
                         <div className='text-xl'>
                             {hub.formattedTotalRecoveredQuantity} {hub.recoveredQuantityUnit}
                         </div>
-                    </div>
+                    </div>}
 
                 </div>
 
-                <StateBadge label={hub.state} state={hub.state} />
+                {imageLoaded && <StateBadge label={hub.state} state={hub.state} />}
 
                 <div
                     className="border-r border-b border-l border-gray-300 bg-white rounded-b p-5 flex flex-col justify-between leading-normal h-full w-full shadow-lg  antialiased relative"
