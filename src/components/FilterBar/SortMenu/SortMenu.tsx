@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { SortIcon } from "../../UI/Icons";
 import { useData } from "../../../context/DataContext";
+import { SORT } from "../../../types/Hub";
 
 interface SortMenuProps { }
 
@@ -49,17 +50,17 @@ const SortMenu: React.FC<SortMenuProps> = memo(() => {
     };
 
     const onApplyAsc = () => {
-        handleSort(sortBy, 'asc')
-        setSortOrder('asc')
+        handleSort(sortBy, SORT.ASC)
+        setSortOrder(SORT.ASC)
 
     }
 
     const onApplyDesc = () => {
-        handleSort(sortBy, 'desc')
-        setSortOrder('desc')
+        handleSort(sortBy, SORT.DESC)
+        setSortOrder(SORT.DESC)
     }
 
-    const handleSort = (sortBy: string, sortOrder: 'asc' | 'desc' | '') => {
+    const handleSort = (sortBy: string, sortOrder: SORT | '') => {
         onApplySort(sortBy, sortOrder)
     };
 
@@ -172,8 +173,8 @@ const SortMenuItem: React.FC<SortMenuItemProps> = ({
                 {label}
                 <span className="ml-2">
 
-                    {currentOption === option && sortOrder === 'asc' && '↑ (asc)'}
-                    {currentOption === option && sortOrder === 'desc' && '↓ (desc)'}
+                    {currentOption === option && sortOrder === SORT.ASC && '↑ (asc)'}
+                    {currentOption === option && sortOrder === SORT.DESC && '↓ (desc)'}
                 </span>
             </span>
         </div>

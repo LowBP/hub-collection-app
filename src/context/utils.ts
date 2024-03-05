@@ -17,43 +17,59 @@ export const preprocessAndGenerateParentChildHubLists = (hubs: Hub[]) => {
     return parentChildHubs;
 }
 
+/**
+ * Class representing a ParentHub object.
+ * ParentHub objects contain information about a hub's name, state, category, recovered quantities,
+ * children hubs, card image, and other custom keys.
+ */
 export class ParentHub {
-    name: string;
-    state: HUB_STATE;
-    category: HUB_CATEGORY;
-    formattedTotalRecoveredQuantity: string;
-    recoveredQuantityUnit: string;
-    referenceQuantityUnit: string;
-    children: Hub[];
-    cardImage: CardImage;
-    className: string;
+    // Properties of the ParentHub object
+    name: string; // Name of the hub
+    state: HUB_STATE; // State of the hub
+    category: HUB_CATEGORY; // Category of the hub
+    formattedTotalRecoveredQuantity: string; // Formatted total recovered quantity
+    recoveredQuantityUnit: string; // Unit of recovered quantity
+    referenceQuantityUnit: string; // Unit of reference quantity
+    children: Hub[]; // Array of child hubs
+    cardImage: CardImage; // Card image associated with the hub
+    className: string; // CSS class name for styling purposes
 
-
-    // custom keys for handling other actions or states
+    // Custom key to track selection state
     isSelected: boolean;
 
+    /**
+     * Constructs a new ParentHub object based on the provided Hub object.
+     * @param arg The Hub object used to initialize the ParentHub.
+     */
     constructor(arg: Hub) {
-
+        // Initialize properties based on the provided Hub object
         this.name = arg.name;
         this.state = arg.state;
         this.category = arg.category;
         this.formattedTotalRecoveredQuantity = arg.formattedTotalRecoveredQuantity;
         this.recoveredQuantityUnit = arg.recoveredQuantityUnit;
-        this.referenceQuantityUnit = arg.referenceQuantityUnit
-        this.cardImage = arg.cardImage
+        this.referenceQuantityUnit = arg.referenceQuantityUnit;
+        this.cardImage = arg.cardImage;
 
+        // Initialize children array
         this.children = [];
 
+        // Initialize selection state and generate a random CSS class for styling
         this.isSelected = true;
         const random = Math.floor(Math.random() * randomColors.length);
-        this.className = `border-${randomColors[random]}-400 bg-${randomColors[random]}-100 text-${randomColors[random]}-800`
-
+        this.className = `border-${randomColors[random]}-400 bg-${randomColors[random]}-100 text-${randomColors[random]}-800`;
     }
 
+    /**
+     * Adds child hubs to the ParentHub object.
+     * @param childHubs Array of child hubs to be added.
+     */
     addChildHub(childHubs: Hub[]) {
-        this.children = [...childHubs.map(hub => { return { ...hub, parentHubBadgeClass: this.className } })]
+        // Map child hubs to include parent hub badge class and add them to the children array
+        this.children = [...childHubs.map(hub => { return { ...hub, parentHubBadgeClass: this.className } })];
     }
 }
+
 
 // Generic Sorting function that handles both strings and numbers
 export const flexibleSort = <T>(property: keyof T, order: 'asc' | 'desc') => {

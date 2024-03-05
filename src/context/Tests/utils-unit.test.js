@@ -1,4 +1,4 @@
-import { preprocessAndGenerateParentChildHubLists, flexibleSort, ParentHub } from './utils';
+import { preprocessAndGenerateParentChildHubLists, flexibleSort, ParentHub } from '../utils';
 
 describe('preprocessAndGenerateParentChildHubLists', () => {
     test('should generate parent and child hubs correctly', () => {

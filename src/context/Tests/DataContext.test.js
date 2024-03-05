@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
-import { DataProvider, DataContext } from './DataContext';
+import { DataProvider, DataContext } from '../DataContext';
 
 // Mock the useNavigate hook
 jest.mock('react-router-dom', () => ({
