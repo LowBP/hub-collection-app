@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ParentHub, flexibleSort, preprocessAndGenerateParentChildHubLists } from './utils';
 import { HUB_STATE, Hub, SORT, Sort } from '../types/Hub';
+import { useNavigate } from 'react-router-dom';
 
 interface DataContextType {
     collectionHubs: Hub[];
@@ -22,6 +23,8 @@ interface DataProviderProps {
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/';
+    const navigate = useNavigate();
+
 
     const [parentChildHubs, setParentChildHubs] = useState<ParentHub[]>([]);
     const [collectionHubs, setCollectionHubs] = useState<Hub[]>([]);
@@ -51,8 +54,11 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
                 setParentChildHubs(preprocessedParentChildHubs);
                 assignAllHubsAtInitialLoad(preprocessedParentChildHubs);
+                throw Error('sadfasf')
             } catch (error) {
                 console.error('Error fetching data:', error);
+                // redirect to error page
+                navigate('/error-page');
             } finally {
                 setLoading(false);
             }
@@ -129,7 +135,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         findHubStates();
     }
 
-
     const findMatchingNames = () => {
         const searchKey = searchName?.trim()?.toLowerCase()
         if (searchName.trim()) {
@@ -149,10 +154,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
             setCollectionHubs((prev) => prev.filter(hub => hub.state === hubState))
         }
     }
-
-
-
-
 
     return (
         <DataContext.Provider value={{ collectionHubs, onApplySort, parentChildHubs, isLoading, setSearchName, setParentChildHubs, performActionsAfterParentHubToggle, setAssignableState, setHubState }}>
