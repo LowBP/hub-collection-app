@@ -8,7 +8,7 @@ describe('CardLoader', () => {
         render(<CardLoader isLoading={true} />);
         const skeletonLoaders = screen.getAllByTestId('skeleton-loader');
 
-        expect(skeletonLoaders).toHaveLength(5);
+        expect(skeletonLoaders).toHaveLength(8);
     });
 
     it('does not render CardLoader when isLoading is false', () => {

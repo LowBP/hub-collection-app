@@ -71,6 +71,7 @@ const SortMenu: React.FC<SortMenuProps> = memo(() => {
                     className="ml-2 p-2 rounded-md bg-gray-200"
                     id="sort-menu"
                     onClick={toggleMenu}
+                    data-testid="sort-btn"
                 >
                     <SortIcon />
                     {sortOrder && (

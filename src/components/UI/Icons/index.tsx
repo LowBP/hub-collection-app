@@ -87,7 +87,7 @@ const ToggleIcon: React.FC = () => {
 
 const LocationIcon: React.FC = () => {
 
-    return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 63 58">
+    return <svg data-testid='location-icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 63 58">
         <g fill="none" fillRule="evenodd">
             <g>
                 <path fill="#FFF" d="M0 0H1440V8021H0z" transform="translate(-372 -7515)" />
@@ -108,7 +108,7 @@ const LocationIcon: React.FC = () => {
 };
 
 const CompanyIcon: React.FC = () => {
-    return <svg className="svg-icon" style={{
+    return <svg className="svg-icon" data-testid='company-icon' style={{
         width: '24px',
         height: '24px',
         verticalAlign: 'middle',
@@ -119,27 +119,27 @@ const CompanyIcon: React.FC = () => {
 
 const OnboardIcon: React.FC = () => {
 
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+    return <svg data-testid='onboard-icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
     </svg>
 }
 
 const OngoingIcon: React.FC = () => {
 
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+    return <svg data-testid='ongoing-icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 }
 
 const TickIcon: React.FC = () => {
 
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-green-500">
+    return <svg data-testid='tick-icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 text-green-500">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
     </svg>
 }
 
 const CloseIcon: React.FC = () => {
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+    return <svg data-testid='close-icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
     </svg>
 
@@ -147,7 +147,7 @@ const CloseIcon: React.FC = () => {
 
 const PlusIcon: React.FC = () => {
 
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+    return <svg data-testid='plus-icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg>
 }
@@ -160,6 +160,7 @@ const ArrowDownIcon: React.FC = () => {
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true"
+        data-testid='arrow-down-icon'
     >
         <path
             fillRule="evenodd"

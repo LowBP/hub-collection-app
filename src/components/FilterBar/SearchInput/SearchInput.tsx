@@ -58,6 +58,7 @@ const SearchInput: React.FC = () => {
             <button
                 className="flex items-center bg-gray-200 py-2 px-4 rounded-r text-gray-800"
                 onClick={handleSearch}
+                data-testid="search-btn"
             >
                 <SearchIcon />
             </button>

@@ -54,7 +54,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
                 setParentChildHubs(preprocessedParentChildHubs);
                 assignAllHubsAtInitialLoad(preprocessedParentChildHubs);
-                throw Error('sadfasf')
             } catch (error) {
                 console.error('Error fetching data:', error);
                 // redirect to error page
@@ -64,10 +63,13 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
             }
         };
 
-        // added setTimeout for showing lazy loading UI
-        setTimeout(() => {
+        // Fetch data after a delay
+        const timeoutId = setTimeout(() => {
             fetchData();
         }, 400);
+
+        // Clean up timeout if component unmounts before the timeout
+        return () => clearTimeout(timeoutId);
     }, []);
 
     const assignAllHubsAtInitialLoad = (parentChildHubs: ParentHub[]) => {
@@ -169,3 +171,5 @@ export const useData = () => {
     }
     return context;
 };
+
+export { DataContext }
